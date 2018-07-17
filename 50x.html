@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+    <script src="page/js/jquery-3.0.0.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .list_title {
+            cursor: pointer;
+            position: relative;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .list_title h2 {
+            background: #fff url(../img/t1.png) no-repeat center center;
+            width: 240px;
+            height: 200px;
+            text-indent: -9999px;
+            margin: 1em auto .8em;
+        }
+
+        .list_title h3 {
+            background: #fff url(page/img/t2.png) no-repeat center center;
+            width: 240px;
+            height: 200px;
+            text-indent: -9999px;
+            margin: 1em auto .8em;
+        }
+
+        .slan22 {
+            position: absolute;
+            background: url(page/img/fengex.png) no-repeat center;
+            width: 100%;
+            height: .2em;
+            left: 0;
+            bottom: 5em;
+            text-align: center;
+        }
+
+        .slan4 {
+            padding-top: 1em;
+            padding-bottom: 1em;
+        }
+
+        .sdmenu {
+            width: 100%;
+            font-size: 1rem;
+            margin: 0 auto;
+            border: 1px solid #DDD;
+            line-height: 2rem;
+            min-height: 10em;
+            height: 100%;
+        }
+
+        .sdmenu a:hover {
+            color: #618085;
+            cursor: pointer;
+        }
+
+        .left-img{
+            float:left;
+            width: 45%;
+            height: auto !important;
+            overflow: hidden;
+            margin: 0 2.5%;
+            min-height: 10em;
+            /*height:400px;*/
+        }
+        .left-img img{
+            width: 100%;
+            display:block;
+            max-height: 30em;
+            min-height: 10em;
+        }
+        .right-text{
+            float: left;
+            width:45%;
+            font-size: .5rem;
+            margin: 0 2.5%;
+            max-height: 30em;
+            text-overflow: ellipsis;
+            /*white-space: nowrap;*/
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        $(function () {
+            pubuliu("artist", 3, 400);
+
+            function pubuliu(ulId, cols) {
+                var wrap = document.getElementById(ulId);
+                var lis = wrap.getElementsByTagName("li");
+
+                var li_h = [];
+                for (var i = 0; i < lis.length; i++) {
+                    var liWidth = lis[i].width();
+                    if (i < cols) {
+                        li_h[i] = lis[i].scrollHeight;
+                        //定位元素
+                        lis[i].style.left = i * liWidth + "px";
+                        lis[i].style.top = "0px";
+                    } else {
+                        //获取数组最小值
+                        var min_liH = Math.min.apply(Math, li_h);
+                        var key = getKeyByValue(li_h, min_liH);
+                        //重定义最小高度
+                        li_h[key] = min_liH + lis[i].scrollHeight;
+
+                        //定位元素
+                        lis[i].style.left = key * liWidth + "px";
+                        lis[i].style.top = min_liH + "px";
+                    }
+                }
+            }
+
+            //根据数组中的值获取索引
+            function getKeyByValue(arr, value) {
+                for (var i = 0; i < arr.length; i++) {
+                    if (arr[i] == value) {
+                        return i;
+                    }
+                }
+            }
+        })
+    </script>
+
+
+</head>
+<body>
+<div style="width:100%; height:851px;">
+
+    <div style="width:100%; height:131px; float:left; background:url(page/img/cen.jpg) no-repeat center top;"></div>
+
+    <div style="width:80%;height:500px;border:#ccc solid 1px;margin: 0 auto;" id="dituContent"></div>
+
+    <div style="width:100%; height:auto; ">
+        <div style="width:100%; height:auto; margin:0 auto;">
+            <div style="width:40%; height:auto; float:left; margin-left: 5%">
+                <ul>
+                    <li style="width:100%; height:auto; float:left; margin-top:1em; text-indent:1em;">
+                        <h2 style="font-weight:normal; background:url(page/img/cen1.jpg) center left no-repeat; height:30px; line-height:30px;">地址：</h2>
+                        <div style="width:100%; height:30px; float:left; line-height:30px;">浙江省宁波市鄞州区天工路15楼</div>
+                    </li>
+                    <li style="width:100%; height:auto; float:left; margin-top:20px; text-indent:20px;">
+                        <h2 style="font-weight:normal; background:url(page/img/cen1.jpg) center left no-repeat; height:30px;line-height:30px;">联系方式：</h2>
+                        <div style="width:100%; height:30px; float:left; line-height:30px;">电话：0574-88127267
+                        </div>
+                        <div style="width:100%; height:30px; float:left; line-height:30px;">手机：15305841515 刘部长
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div style=" width:50%; height:auto; float:right; margin-right: 5%">
+                <form id="contactform" name="contactform" action="#" method="post" onsubmit="return validate_form(this);">
+                    <div class="gusetbook" style="margin-top:20px;">
+                        <div class="gb_right" style="width:50%; height:auto; float:right;">
+                            <textarea id="content" onblur="if(this.value == '') { this.value = this.defaultValue; }"
+                                      onfocus="if(this.value == this.defaultValue) { this.value = ''; }" rows="3"
+                                      cols="40" name="content" class="text_area">留言内容...</textarea>
+                        </div>
+                        <div class="gb_left" style="width:48%; height:auto; float:left;">
+                            <input id="username" type="text" value="昵称"
+                                   onblur="if(this.value == '') { this.value = this.defaultValue; }"
+                                   onfocus="if(this.value == this.defaultValue) { this.value = ''; }" size="30"
+                                   name="username" class="input">
+                            <input id="phone" type="text" value="电话"
+                                   onblur="if(this.value == '') { this.value = this.defaultValue; }"
+                                   onfocus="if(this.value == this.defaultValue) { this.value = ''; }" size="30"
+                                   name="phone" class="input">
+                            <input id="email" type="text" value="邮箱"
+                                   onblur="if(this.value == '') { this.value = this.defaultValue; }"
+                                   onfocus="if(this.value == this.defaultValue) { this.value = ''; }" size="30"
+                                   name="email" class="input">
+                        </div>
+                        <div style="width:100%; height:37px; float:left;">
+                            <input id="submit" type="submit" value="提交" class="submit">
+                        </div>
+                    </div>
+                </form>
+                <style>
+                    .gusetbook .gb_left .input {
+                        width: 100%;
+                        height: 2em;
+                        border: 1px solid #dbdbdb;
+                        margin-bottom: 1em;
+                        color: #636363;
+                        font-family: "微软雅黑";
+                        font-size: .8em;
+                        text-indent: 8px;
+                        line-height: 2em;
+                    }
+
+                    .gusetbook .gb_right .text_area {
+                        width:100%;
+                        height: 8em;
+                        /*padding: 10px;*/
+                        color: #636363;
+                        font-family: "微软雅黑";
+                        font-size: .8em;
+                        resize: none;
+                        border: 1px solid #dbdbdb;
+                    }
+
+                    .submit {
+                        width: 100%;
+                        height: 2em;
+                        background: #aaaaaa;
+                        color: #fff;
+                        font-family: "微软雅黑";
+                        font-size: 1em;
+                        border: 1px solid #aaaaaa;
+                    }
+                </style>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        var img = $('.left-img').height();
+        $('.slan4-con').css({'height':img});
+        // $('.right-text').css({'max-height':img});
+        $('.right-text').height(img);
+    });
+
+    $(window).resize(function () {
+        var img = $('.left-img').height();
+        $('.slan4-con').css({'height':img});
+        // $('.right-text').css({'max-height':img});
+        $('.right-text').height(img);
+    })
+</script>
+</body>
+</html>

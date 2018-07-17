@@ -1,0 +1,143 @@
+
+.title-img {
+    padding-bottom: 0;
+    padding-top: 0;
+    background-color: rgb(67, 67, 67);
+    height: 30em;
+    position: relative;
+    display: flex;
+}
+.about-img {
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    height: 100%;
+    background-position: 50% 90%;
+    background-position-y: 100%;
+}
+.title-text {
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    position: relative;
+    margin-top: 2em;
+}
+.about_us {
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+.about {
+    color: rgb(255, 255, 255);
+    font-size: 2em;
+    font-family: Source-Han-Normal;
+}
+
+.path {
+    padding-bottom: 0;
+    padding-top: 0;
+    background-color: rgba(217, 217, 217, 0.23);
+    min-height: 3em;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+.tips {
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+    min-height: 4em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.p-text {
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: #999;
+}
+
+.insideMain {
+    padding: 4em 0 0 0;
+    width: 100%;
+    font-size: 1rem;
+    background-color: rgba(0, 0, 0, 0);
+    margin-bottom: 5em;
+}
+.title-tips{
+    text-align: center;
+    min-height: 0px;
+}
+.title-name {
+    margin-bottom: 10px;
+    margin-top: 0px;
+    font-size: 1.8rem;
+    font-weight: normal;
+    line-height: 1.1;
+    color: inherit;
+}
+.title-en {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-family: Oswald;
+    font-weight: 500;
+    color: #ccc;
+    transform: translate3d(0,0,0);
+    min-width: 1em;
+    min-height: 1em;
+}
+.about-content{
+    margin-top: 4em;
+}
+.content-img {
+    height: 40em;
+    width: 60%;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+}
+.div-img{
+    position: relative;
+    background-size: cover;
+    /*height: 100%;*/
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.content-main {
+    height: auto;
+    width: 70%;
+    padding-bottom: 0;
+    border-bottom: 1px dotted rgba(204, 204, 204, 0.8);
+}
+.content-main p{
+    line-height: 2em;
+    color: rgb(119, 119, 119);
+    font-size: 1em;
+    padding-right: 10px;
+}

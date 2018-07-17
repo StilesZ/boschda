@@ -1,0 +1,437 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration-line: none;
+    width: 100%;
+}
+
+.left ul li {
+    /*padding: .8em 0;*/
+    background: rgba(255, 255, 255, 0.8);
+    position: relative;
+    box-sizing: border-box;
+    border-radius: .3em;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.left-nav li a {
+    padding: .8em 0;
+    display: block;
+    width: 100%;
+}
+
+.left-nav li a.active {
+    background: rgba(130, 130, 130, 0.74);
+}
+
+.left ul li ul {
+    display: none;
+}
+
+.left ul li ul li {
+    padding: .3em;
+    font-size: .8rem;
+    background: rgba(221, 221, 221, 0.37);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.submenu a:hover {
+    background: #c6c6c6;
+    color: #FFF;
+}
+
+.content {
+    height: 92%;
+}
+
+.left {
+    float: left;
+    width: 20%;
+    height: 100%;
+}
+
+.main {
+    float: left;
+    width: 80%;
+    background: #dddddd;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.title {
+    height: 2em;
+    line-height: 2em;
+    padding: 0.5em;
+}
+
+.name {
+    float: left;
+}
+
+.name input {
+    border-radius: 5px;
+    height: 2em;
+    border: 1px solid #dbdbdb;
+    line-height: 2em;
+}
+
+.name button {
+    margin: 0 0.5em;
+    width: 4em;
+    height: 2em;
+    background: #aaaaaa;
+    color: #fff;
+    font-size: 1em;
+    border: 1px solid #aaaaaa;
+    border-radius: 5px;
+}
+
+.add {
+    float: right;
+    width: 10%;
+    background: #aaaaaa;
+    color: #e5e5e5;
+    text-align: center;
+    border-radius: 5px;
+}
+.add a{
+    display:block;
+    width: 100%;
+}
+.add:hover {
+    cursor: pointer;
+}
+
+.list-title {
+    padding: 0.5em 0;
+    background: rgba(130, 130, 130, 0.74);
+    height: 3em;
+    line-height: 3em;
+}
+
+.list {
+    padding: 0.5em 0;
+    height: 3em;
+    line-height: 3em;
+}
+
+.list_1 {
+    float: left;
+    padding-left: 0.1%;
+    height: 3em;
+    min-width: 4em;
+    text-align: center;
+    display: block;
+    width: 8%;
+    overflow: hidden;
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+
+.list_1::-webkit-scrollbar {
+    display: none
+}
+
+.list_1 a {
+    font-size: .5em;
+    padding-left: 0.3em;
+    cursor: pointer;
+    color: #14ab04;
+}
+
+.list_1 img {
+    width: 100%;
+    height: 100%;
+}
+
+.edit input{
+    margin: .5em 0;
+    padding: 0 .5em;
+    width: 70%;
+    height: 2em;
+    line-height: 2em;
+    font-size: 1.5rem;
+    border: 1px solid #dbdbdb;
+}
+
+.edit select{
+    margin: .5em 0;
+    padding: 0 .5em;
+    width: 70%;
+    height: 2em;
+    line-height: 2em;
+    font-size: 1.5rem;
+    border: 1px solid #dbdbdb;
+}
+
+.edit select option{
+    margin: .5em 0;
+    padding: 0 .5em;
+    width: 70%;
+    height: 1.5em;
+    line-height: 1.5em;
+    font-size: 1rem;
+    border: 1px solid #dbdbdb;
+}
+
+.edit textarea{
+    margin: .5em 0;
+    padding: 0 .5em;
+    width: 70%;
+    height: 10em;
+    font-size: 1rem;
+    border: 1px solid #dbdbdb;
+}
+
+.edit .img{
+    width: 20%;
+    height: 100%;
+}
+.edit .img img{
+    width: 100%;
+    height: 100%;
+}
+
+/*.sel{*/
+    /*float: left;*/
+    /*width: 50%;*/
+    /*text-align: center;*/
+/*}*/
+
+.track{
+    width: 100%;
+}
+.sel{
+    float: left;
+    padding: 0 2%;
+    width: 90%;
+    text-align: left;
+}
+.sel select{
+    margin: .5em;
+    padding: 0 .5em;
+    width: 30%;
+    height: 2em;
+    line-height: 2em;
+    font-size: 1.5rem;
+    border: 1px solid #dbdbdb;
+    min-width: 3em;
+}
+
+.sel select option{
+    margin: .5em 0;
+    padding: 0 .5em;
+    width: 50%;
+    height: 1.5em;
+    line-height: 1.5em;
+    font-size: 1rem;
+    border: 1px solid #dbdbdb;
+}
+
+.sel-mui{
+    float: left;
+    padding: 0 2%;
+    width: 90%;
+    text-align: left;
+}
+.sel-mui input{
+    margin: .5em;
+    padding: 0 .5em;
+    width: 30%;
+    height: 2em;
+    line-height: 2em;
+    font-size: 1.5rem;
+    border: 1px solid #dbdbdb;
+    min-width: 3em;
+}
+.sel-mui button{
+    margin: .5em;
+    padding: 0 .5em;
+    width: auto;
+    height: 2em;
+    line-height: 2em;
+    font-size: 1.5rem;
+    border: 1px solid #dbdbdb;
+    background: white;
+}
+
+.dialog{
+    position: absolute;
+    display: none;
+    width: 80%;
+    height: 80%;
+    top: 10%;
+    left: 10%;
+    background: white;
+    border: .1em #a5a5a5 solid;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.close{
+    float: right;
+    margin: .2em;
+    font-size: 1.2em;
+    font-weight: 800;
+    padding: .1em .3em;
+    border: 1px gray solid;
+    cursor: pointer;
+}
+.dialog-title{
+    width: 100%;
+    height: 2em;
+    line-height: 2em;
+    font-size: 1.5em;
+    text-align: center;
+    margin: 1em 0;
+}
+/*.name{*/
+    /*float: left;*/
+    /*padding: 0 .5em;*/
+    /*width: 30%;*/
+    /*height: 1.5em;*/
+    /*line-height: 1.5em;*/
+    /*font-size: 1rem;*/
+/*}*/
+.addButton{
+    float: right;
+    margin: 0 .5em;
+    padding: 0 .5em;
+    width: auto;
+    height: 1.5em;
+    line-height: 1.5em;
+    font-size: 1.2rem;
+    border: 1px solid #dbdbdb;
+    background: white;
+}
+.dialog-attr{
+    width: 80%;
+    margin: 2em auto;
+    min-height: 2em;
+}
+.dialog-attr input{
+    width: 70%;
+    margin: 0 .5em;
+    padding: 0 .5em;
+    height: 1.5em;
+    line-height: 1.5em;
+    font-size: 1.2rem;
+    border: 1px solid #dbdbdb;
+    min-width: 3em;
+}
+.dialog-type{
+    width: 80%;
+    margin: 1em auto;
+    font-size: 1em;
+}
+.dialog-type select{
+    padding: 0 .5em;
+    height: 1.5em;
+    line-height: 1.5em;
+    font-size: 1rem;
+    border: 1px solid #dbdbdb;
+    min-width: 3em;
+}
+
+.dialog-type select option{
+    margin: .5em 0;
+    padding: 0 .5em;
+    width: 50%;
+    height: 1em;
+    line-height: 1em;
+    font-size: .8rem;
+    border: 1px solid #dbdbdb;
+}
+.save{
+    position: absolute;
+    left: 35%;
+    bottom: 1em;
+    width: 30%;
+    height: 2em;
+    line-height: 2em;
+    font-size: 1.5rem;
+    background: white;
+    text-align: center;
+    border: 1px solid #dbdbdb;
+    cursor: pointer;
+}
+
+.view{
+    width: 100%;
+    margin: 2em auto;
+    text-align: justify;
+}
+.left-view{
+    /*float: left;*/
+    width: 40%;
+    background: #ff0000;
+    height: 10em;
+    margin: 0 5%;
+    display: inline-block;
+}
+.right-view{
+    width: 40%;
+    height: 10em;
+    background: #868686;
+    margin: 0 auto;
+    display: inline-block;
+}
+.client{
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+}
+.client table {
+    width: 100%;
+    border: 1px #868686 solid;
+    text-align: center;
+}
+.client table tr{
+    height: 2em;
+    line-height: 2em;
+    font-size: 1.5rem;
+}
+.client table tr td{
+    width: 33%;
+}
+
+.active{
+    background: #a5a5a5;
+}
+.start{
+    margin: .5em auto;
+    width: 30%;
+    height: 2em;
+    line-height: 2em;
+    font-size: 1.5rem;
+    border: 1px solid #dbdbdb;
+    background: white;
+    cursor: pointer;
+}
+
+.weld table {
+    margin: 0 auto;
+    width: 60%;
+    border: 1px #868686 solid;
+    text-align: center;
+}
+.weld table tr{
+    height: 1.5em;
+    line-height: 1.5em;
+    font-size: 1rem;
+}
+.weld table tr td{
+    /*width: 25%;*/
+}
