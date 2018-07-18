@@ -9,8 +9,8 @@ include '../../dao/Db.php';
 include '../log/log.php';
 
 $name = $_POST['name']; // 获取用户名
-//$pwd = md5($_POST['password']);   // 获取密码
-$pwd = $_POST['password'];
+$pwd = md5($_POST['password']);   // 获取密码
+//$pwd = $_POST['password'];
 $uri = $_SERVER['REQUEST_URI'];
 if (!empty($name) && !empty($pwd)) {
     $sql = "select * from admin where name='{$name}'";
@@ -26,7 +26,7 @@ if (!empty($name) && !empty($pwd)) {
         addLog($mysqli, $_SESSION['name'], "login", 'login', "用户登录成功ID=" . $res['id']);
         echo "<script>window.location.href='../index.php'</script>";
     } else {
-        addLog($mysqli, $name, "login", 'login', "用户登录失败ID=" . $res['id']);
+        addLog($mysqli, $name, "login", 'login', "用户登录失败:" . $name);
         echo "<script>alert('登录失败'); window.location.href='../login.html'</script>";
         exit();
     }

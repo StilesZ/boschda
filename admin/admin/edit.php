@@ -16,6 +16,11 @@ $type = empty($_REQUEST['type']) ? null : $_REQUEST['type'];
 //id存在更新，不存在插入
 if (!empty($_REQUEST['id'])) {
     $id = $_REQUEST['id'];
+    $checkpsw=$mysqli->query("select name from admin where id='{$id}'");
+    $re=$checkpsw->fetch_assoc();
+    if($re['password']!=$psw){ //判断密码是否更改
+        $psw=md5($psw);
+    }
     $check=check($name,$mysqli,$id);//判断用户名是否存在
     $sql = "update admin set name='{$name}',password='{$psw}',user_type='{$type}',status='{$status}' where id={$id}";
     $result = $mysqli->query($sql);
