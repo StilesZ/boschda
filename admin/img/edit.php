@@ -31,6 +31,7 @@ if (!empty($_REQUEST['id'])) {
 
     $sqlU = "update ".$type." set pic='{$pic}' where id={$id}";
     $re = $mysqli->query($sqlU);
+    $id=$mysqli->insert_id;
     if ($re) {
         addLog($mysqli,$_SESSION['name'],"image",'edit',"图片修改成功ID=".$id);
         echo "<script>alert('success');location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";

@@ -16,7 +16,7 @@ function addLog($mysqli,$user,$type,$operate,$content){
         $content.="type null";
     }
     $date=date('Y-m-d H:i:s',time());
-
+    //插入数据库
     $sql = "insert into log(user,type,operate,content,time) values ('{$user}','{$type}','$operate','{$content}','{$date}')";
     $res = $mysqli->query($sql);
     if($res){

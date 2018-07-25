@@ -7,7 +7,7 @@
  */
 include '../config.php';
 include '../log/log.php';
-
+//id不存在返回
 if(empty($_REQUEST['id'])){
     echo "<script>location.href='".$_SERVER["HTTP_REFERER"]."';</script>";
 }

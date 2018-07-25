@@ -7,7 +7,7 @@
  */
 include '../config.php';
 include '../log/log.php';
-
+//request input值
 $id = "";
 $name = $_REQUEST['name'];
 $psw = $_REQUEST['psw'];
@@ -21,7 +21,9 @@ if (!empty($_REQUEST['id'])) {
     if($re['password']!=$psw){ //判断密码是否更改
         $psw=md5($psw);
     }
+
     $check=check($name,$mysqli,$id);//判断用户名是否存在
+
     $sql = "update admin set name='{$name}',password='{$psw}',user_type='{$type}',status='{$status}' where id={$id}";
     $result = $mysqli->query($sql);
     if ($result) {
@@ -33,8 +35,10 @@ if (!empty($_REQUEST['id'])) {
     }
 } else {
     $check=check($name,$mysqli,$id);
+
     $sql = "insert into admin(name,password,user_type,status) values ('{$name}','{$psw}','{$type}','{$status}')";
     $result = $mysqli->query($sql);
+    $id=$mysqli->insert_id;
     if ($result) {
         addLog($mysqli, $_SESSION['name'], "admin", 'add', "用户信息添加成功ID=".$id);
         echo "<script>alert('success'); location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";

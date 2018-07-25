@@ -14,6 +14,7 @@
         <div class="list_1">操作</div>
     </div>
 <?
+//信息查询
 $sql="select * from admin";
 if(!empty($_REQUEST['name'])){
     $name=$_REQUEST['name'];

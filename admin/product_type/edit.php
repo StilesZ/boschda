@@ -27,6 +27,7 @@ if (!empty($_REQUEST['id'])){
 }else{
     $sql="insert into product_type(name,pid) values ('{$name}','{$pid}')";
     $result=$mysqli->query($sql);
+    $id=$mysqli->insert_id;
     if($result){
         addLog($mysqli,$_SESSION['name'],"product_type",'add',"产品类别信息添加成功ID=".$id);
         echo "<script>alert('success');location.href='".$_SERVER["HTTP_REFERER"]."';</script>";

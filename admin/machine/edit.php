@@ -27,6 +27,7 @@ if (!empty($_REQUEST['id'])) {
     $check=check($name,$mysqli,$id);
     $sql = "insert into machine(name) values ('{$name}')";
     $result = $mysqli->query($sql);
+    $id=$mysqli->insert_id;
     if ($result) {
         addLog($mysqli, $_SESSION['name'], "machine", 'add', "焊机信息添加成功ID=".$id);
         echo "<script>alert('success'); location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";

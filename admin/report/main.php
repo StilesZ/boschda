@@ -6,6 +6,7 @@
  * Time: 10:55
  */
 include '../config.php';
+//默认焊缝种类 第一条
 $sql = "select * from weld_type order by id ASC limit 1";
 $result = $mysqli->query($sql);
 $row = $result->fetch_array();
@@ -18,14 +19,18 @@ $row = $result->fetch_array();
         json.val = {};
         var i=0;
 
+        //
         $(".dialog-title span").text($("select[name='type']").find("option:selected").text());
 
+        //
         $("#show").click(function () {
             $(".dialog").css("display","block");
         });
+        //
         $(".close").click(function () {
             $(".dialog").css("display","none");
         });
+        //
         $("#add").click(function () {
             var name=prompt("工件属性","");
             if(name.trim()){
@@ -33,6 +38,7 @@ $row = $result->fetch_array();
                 i++;
             }
         });
+        //
         $("#save").click(function () {
             var weld=$("select[name='weld-type']").val();
             var type=$("select[name='type']").val();
@@ -45,10 +51,12 @@ $row = $result->fetch_array();
             $(".dialog").css("display","none");
         });
 
+        //工件类型
         $("select[name='type']").change(function () {
             $(".dialog-title span").text($("select[name='type']").find("option:selected").text());
         });
 
+        //焊缝种类
         $("select[name='weld-type']").change(function () {
             var weld=$("select[name='weld-type']").val();
             $.ajax({
@@ -56,7 +64,7 @@ $row = $result->fetch_array();
                 type:'post',
                 dataType:'json',
                 data:{weld:weld},
-                async:true,//同步
+                async:true,
                 success:function(result){
                     $('#weld tr:first').empty();
                     $('#weld tr:not(:first)').remove();
@@ -83,6 +91,7 @@ $row = $result->fetch_array();
             $("#delete"+e+"").parent("div").remove();
         }
 
+        //
         $(".client tr").click(function () {
             $(this).addClass("active");
             id=$(this).children('td').eq(0).text();

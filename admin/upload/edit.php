@@ -42,6 +42,7 @@ if (!empty($_REQUEST['id'])) {
 }else{
     $sqlI = "insert into download(name,url) values ('{$name}','{$url}')";
     $re = $mysqli->query($sqlI);
+    $id=$mysqli->insert_id;
     if ($re) {
         addLog($mysqli,$_SESSION['name'],"download",'add',"下载信息添加成功ID=".$id);
         echo "<script>alert('success');location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";

@@ -17,6 +17,7 @@ $date = date('Y-m-d H:i:s', time());
 
 $sqlU = "insert into message(title,name,email,phone,content,time) values ('{$title}','{$name}','{$email}','$phone','{$content}','{$date}')";
 $re = $mysqli->query($sqlU);
+$id=$mysqli->insert_id;
 if ($re) {
     addLog($mysqli,$name,"message",'add',"用户留言成功");
     echo "<script>alert('success');location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";

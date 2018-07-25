@@ -57,6 +57,7 @@ if (!empty($_REQUEST['id'])) {
     $img = check($file[1],"");
     $sqlU = "insert into product(name,type_id,pic,img,introduce,content_nature,content_technology,content_use,content_parts) values ('{$name}','{$type_id}','{$pic}','{$img}','{$introduce}','{$content_nature}','{$content_technology}','{$content_use}','{$content_parts}')";
     $re = $mysqli->query($sqlU);
+    $id=$mysqli->insert_id;
     if ($re) {
         for($i=0;$i<count($file);$i++){
             $url=check($file[$i],'');

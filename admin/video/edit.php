@@ -41,6 +41,7 @@ if (!empty($_REQUEST['id'])) {
     $pic = check($file,"");
     $sqlU = "insert into video(name,pic,url) values ('{$name}','{$pic}','{$url}')";
     $re = $mysqli->query($sqlU);
+    $id=$mysqli->insert_id;
     if ($re) {
         if($pic!=""){
             $sqlI = "insert into image(type,url) values ('video','{$pic}')";
