@@ -21,13 +21,9 @@ $sel="select * from weld_type where id ={$id}";
 
 $result = $mysqli->query($sel);
 
-if ($result->num_rows>0) {
-    $date=json_encode($result->fetch_all(),true);
-    $date=json_decode($date);
-    $date=json_encode($date);
+$result = $result->fetch_assoc();
+    $date=json_encode($result['attribute']);
+//    $date=json_decode($date);
+//    $date=json_encode($date);
     echo $date;//输出json数据
     exit();
-} else {
-    echo $error;
-    exit();
-}

@@ -7,7 +7,7 @@
  */
 include '../config.php' ?>
 <div class="title">
-    <div class="name">焊缝类型：<input type="text" name="name"><button onclick="search('weld_type/main.php')">查询</button></div>
+<!--    <div class="name">焊缝类型：<input type="text" name="name"><button onclick="search('weld_type/main.php')">查询</button></div>-->
     <div class="add"><a onclick="action('weld_type/add.php')">添加</a></div>
 </div>
 <div id="ch-main">
@@ -27,7 +27,7 @@ while($row = $pro->fetch_assoc()) {
     ?>
     <div class="list">
         <div class="list_1"><?=$row['id']?></div>
-        <div class="list_1"><?=$row['name']?></div>
+        <div class="list_1"><?=$row['attribute']?></div>
         <div class="list_1"><a onclick="action('weld_type/add.php?id=<?=$row['id']?>')">编辑</a><a onclick="del(<?=$row['id']?>,'weld_type')">删除</a></div>
     </div>
     <?

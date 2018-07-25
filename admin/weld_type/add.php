@@ -6,7 +6,7 @@
  * Time: 15:33
  */
 include '../config.php';
-$row=array();
+$row = array();
 if (!empty($_REQUEST['id'])) {
     $id = $_REQUEST['id'];
     $sql = "select * from weld_type where id={$id}";
@@ -14,11 +14,80 @@ if (!empty($_REQUEST['id'])) {
     $row = $result->fetch_array();
 }
 ?>
-<form action="weld_type/edit.php?id=<?=count($row)>0?$row[0]:''?>" method="post">
-    <div style="margin:20px auto;">
+<script>
+    $(document).ready(function () {
+        var i = 0;
+        var json={};
+        json.val = {};
+        $("select[name='type']").change(function () {
+            var place = $("select[name='type']").find("option:selected").text();
+            var name = $("select[name='type']").val();
+            $(".edit").eq(0).append("<div><input type='text' name='" + name + "' placeholder='" + place + "'><button id='delete" + i + "' class='addButton' onclick='remove(" + i + ")'>-</button></div>");
+            i++;
+        });
+        remove = function (e) {
+            $("#delete" + e + "").parent("div").remove();
+        }
+
+        $('#addForm').on('submit', function (e){
+            var input = $(".edit").eq(0).find('input');
+            var num = input.length;
+            for (var i = 0; i < num; i++) {
+                var val = input.eq(i).attr("name");
+                // str = "json."+val+"='"+input.eq(i).val()+"'";
+                str = "json.val." + val + "='" + input.eq(i).val() + "'";
+                eval(str);
+            }
+            e . preventDefault();
+            $.ajax({
+                url:'weld_type/edit.php?id=<?=count($row)>0?$row[0]:''?>',
+                type:'post',
+                dataType:'text',
+                data:json,
+                async:true,//同步
+                success:function(result){
+                    console.log(result);
+                    if(result.trim()=="success"){
+                        action("weld_type/main.php");
+                    }else{
+                        alert("fail");
+                    }
+                },
+                error:function(){
+                    alert('false');
+                }
+            });
+        })
+    });
+</script>
+<form id="addForm" action="weld_type/edit.php?id=<?=count($row)>0?$row[0]:''?>" method="post">
+    <div class="add_button" style="width:88%; margin: 1em auto;">
+        <select name="type">
+            <?
+            $sql = "select * from weld_attr";
+            $res = $mysqli->query($sql);
+            while ($option = $res->fetch_assoc()) {
+                ?>
+                <option value="<?= $option['name'] ?>" <? if ($option['id'] == 1) echo "selected='selected'"; ?>><?= $option['remark'] ?></option>
+                <?
+            } ?>
+        </select>
+    </div>
+
+    <div id="check_weld" style="margin:20px auto;">
         <div class="edit" style="width:88%; height:auto; margin: 0 auto;">
-            <input type="text" placeholder="焊缝类型" onblur="if(this.value == '') { this.value = this.defaultValue; }"
-                   onfocus="if(this.value == this.defaultValue) { this.value = ''; }"  size="30" name="name" value="<?=count($row)>0?$row[1]:''?>">
+            <?
+            if (!empty($row[1])) {
+                $val = json_decode($row[1]);
+                foreach ($val as $key => $value) {
+                    ?>
+                    <div><?= $key ?><input type='text' name='<?= $key ?>' value='<?= $value ?>'>
+                        <button id='delete"+i+"' class='addButton' onclick='remove("+i+")'>-</button>
+                    </div>
+                    <?
+                }
+            }
+            ?>
         </div>
         <div class="edit" style="width:88%; height:auto; margin: 0 auto;">
             <input id="submit" type="submit" value="提交" style="cursor: pointer;background: rgba(165,165,165,0.37);">

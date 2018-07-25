@@ -54,7 +54,7 @@ include './admin/checklogin.php';
         // read();
     });
 
-    websocket = new WebSocket('ws://127.0.0.1:2046/');
+    websocket = new WebSocket('ws://192.168.0.161:2046/');
 
     websocket.onopen = function(evt) {
         console.log('connect');
@@ -134,8 +134,6 @@ include './admin/checklogin.php';
                     //xmlHttp.status == 200        ——    服务器反馈正常
                     document.getElementById("main").innerHTML = xmlHttp.responseText;
                     executeScript(xmlHttp.responseText);
-
-
                     var list=$('.list-title .list_1');
                     var item=$('.list .list_1');
                     var li=list.length;

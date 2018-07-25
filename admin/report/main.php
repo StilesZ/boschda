@@ -6,7 +6,9 @@
  * Time: 10:55
  */
 include '../config.php';
-
+$sql = "select * from weld_type order by id ASC limit 1";
+$result = $mysqli->query($sql);
+$row = $result->fetch_array();
 ?>
 <script>
     $(document).ready(function () {
@@ -15,6 +17,8 @@ include '../config.php';
         var json={};
         json.val = {};
         var i=0;
+
+        $(".dialog-title span").text($("select[name='type']").find("option:selected").text());
 
         $("#show").click(function () {
             $(".dialog").css("display","block");
@@ -41,6 +45,10 @@ include '../config.php';
             $(".dialog").css("display","none");
         });
 
+        $("select[name='type']").change(function () {
+            $(".dialog-title span").text($("select[name='type']").find("option:selected").text());
+        });
+
         $("select[name='weld-type']").change(function () {
             var weld=$("select[name='weld-type']").val();
             $.ajax({
@@ -50,7 +58,20 @@ include '../config.php';
                 data:{weld:weld},
                 async:true,//同步
                 success:function(result){
+                    $('#weld tr:first').empty();
+                    $('#weld tr:not(:first)').remove();
+                    var th="<th></th>";
+                    var tr="<tr><td>i</td>";
+                    var result=JSON.parse(result);
                     console.log(result);
+                    for(var p in result){//遍历json对象的每个key/value对,p为key
+                        console.log(p + " " + result[p]);
+                        th+="<th>"+p+"</th>";
+                        tr+="<td>"+result[p]+"</td>";
+                    }
+                    tr+="</tr>";
+                    $('#weld tr:first').append(th);
+                    $('#weld').append(tr);
                 },
                 error:function(){
                     alert('false');
@@ -145,24 +166,27 @@ include '../config.php';
                 ?>
                 <option value="<?=$option['id']?>" <? if($option['id']==1) echo "selected='selected'";?>><?=$option['id']?></option>
                 <?
-            }?>
+            }
+            ?>
         </select>
         <button id="review" class="addButton">进入</button>
     </div>
     <div class="weld">
-        <table>
+        <table id="weld">
             <tr>
                 <th></th>
-                <th>电压</th>
-                <th>电流</th>
-                <th>速度</th>
+                <?
+                if (!empty($row[1])) {
+                    $val = json_decode($row[1]);
+                    foreach ($val as $key => $value) {
+                        ?>
+                        <th><?=$key?></th>
+                        <?
+                    }
+                }
+                ?>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>电压</td>
-                <td>电流</td>
-                <td>速度</td>
-            </tr>
+
         </table>
     </div>
     <button id="save" class="save">保存</button>
@@ -180,17 +204,17 @@ include '../config.php';
         </tr>
         <tr>
             <td>1</td>
-            <td>32</td>
+            <td>192.168.1.1</td>
             <td>312</td>
         </tr>
         <tr>
             <td>2</td>
-            <td>32</td>
+            <td>192.168.1.11</td>
             <td>312</td>
         </tr>
         <tr>
             <td>3</td>
-            <td>32</td>
+            <td>192.168.1.12</td>
             <td>312</td>
         </tr>
     </table>
