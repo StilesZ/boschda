@@ -331,6 +331,7 @@ a {
     border: 1px solid #dbdbdb;
     min-width: 3em;
 }
+
 .dialog-type{
     width: 80%;
     margin: 1em auto;
@@ -434,4 +435,35 @@ a {
 }
 .weld table tr td{
     /*width: 25%;*/
+}
+
+.add_button select{
+    margin: .5em 0;
+    padding: 0 .5em;
+    width: auto;
+    height: 2em;
+    line-height: 2em;
+    font-size: 1.5rem;
+    border: 1px solid #dbdbdb;
+    background: white;
+}
+.add_button select option{
+    margin: .5em 0;
+    padding: 0 .5em;
+    width: 50%;
+    height: 1em;
+    line-height: 1em;
+    font-size: .8rem;
+    border: 1px solid #dbdbdb;
+}
+
+.edit div button{
+    margin: .5em;
+    padding: 0 .5em;
+    width: auto;
+    height: 2em;
+    line-height: 2em;
+    font-size: 1.5rem;
+    border: 1px solid #dbdbdb;
+    background: white;
 }

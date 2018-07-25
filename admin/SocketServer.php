@@ -39,7 +39,10 @@ class SocketServer
                     $client = socket_accept($socket);
                     $this->handshake = false;
                     socket_getpeername($client, $add, $por);
+                    echo iconv('UTF-8', 'GBK', $add."  address \n");
                     if ($client) {
+//                        socket_getpeername($client, $addre, $por);
+//                        echo iconv('UTF-8', 'GBK', $addre."  address \n");
                         $this->sockets[] = $client; //加入连接池
                     }
                 } else {
@@ -178,4 +181,4 @@ class SocketServer
 }
 
 $sc = new SocketServer();
-$sc->run('127.0.0.1', 2046);
+$sc->run('192.168.0.161', 2046);
