@@ -21,7 +21,7 @@ $val=json_encode($array['val']);//二维数组 属性值转json类型
 $val=json_decode($val);
 $val=json_encode($val,JSON_UNESCAPED_UNICODE);
 
-$sel="select *,count(*) as count from workpiece,work where work.id=workpiece.type and workpiece.type ={$array['type']}";
+$sel="select *,count(*) as count from workpiece,work where work.id=workpiece.type and work.id ={$array['type']}";
 $result = $mysqli->query($sel);
 $nu=$result->fetch_array();
 $name=$nu[7].$nu[8];

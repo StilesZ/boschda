@@ -107,7 +107,7 @@ $row = $result->fetch_array();
                 data:json,
                 async:true,//同步
                 success:function(result){
-                    console.log(result.val);
+                    console.log(result);
                 },
                 error:function(){
                     alert('false');
