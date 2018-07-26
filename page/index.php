@@ -12,17 +12,6 @@
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=jvmCdVONCWwkAisZVbbwSfSp"></script>
 <script>
     $(function(){
-        // var $divWidth = $('body').innerWidth();
-        // $('.b-img img').css({'width':$divWidth});
-
-        // $(document).click(function(){
-        //     $('.nav').removeClass('open')
-        // });
-        // $('.nav-trigger,.nav').click(function(e){e.stopPropagation()});
-        // $('.nav-trigger').click(function(e){
-        //     $('.nav').toggleClass('open');
-        // })
-
         var img = $('.left-img').height();
         $('.slan4-con').height(img);
         $('.right-text').height(img);
