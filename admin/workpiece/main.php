@@ -28,7 +28,7 @@ include '../page.php';
     $sql = "select * from work ";
     if (!empty($_REQUEST['name'])) {
         $name = $_REQUEST['name'];
-        $sql .= " where name='{$name}'";
+        $sql .= " where name like '%{$name}%'";
     }
     $sql .= $pg->limit;
     $pro = $mysqli->query($sql);

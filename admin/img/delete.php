@@ -18,6 +18,10 @@ $result=$mysqli->query($sql);
 if(!$result){
     echo "failed";
 }else{
+    $sel="select * from image where id={$id}";
+    $result=$mysqli->query($sel);
+    $res=$result->fetch_assoc();
+    unlink("../../upload/".$res['url']);//删除本地文件
     addLog($mysqli,$_SESSION['name'],"image",'delete',"图片删除成功ID=".$id);
     echo "<script>alert('删除成功!');action('image/main.php');</script>";
 }

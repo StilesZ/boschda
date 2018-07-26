@@ -19,8 +19,11 @@ function upload_fun($fileInfo,$path,$allowExt,$maxSize){
         mkdir($path,0777,true);//创建目录
         chmod($path, 0777);//改变文件模式,所有人都有执行权限、写权限、度权限
     }
+    //重命名文件
+//    $uniName=md5(uniqid(microtime(true),true)).'.'.$ext;
 
-    $uniName=md5(uniqid(microtime(true),true)).'.'.$ext;
+    $uniName=date("YmdHis").rand(10,99).'.'.$ext;
+
     $destination=$path."/".$uniName; //目标存放文件地址
 
     //当文件上传成功，存入临时文件夹，服务器端开始判断

@@ -25,15 +25,18 @@ include '../page.php';
         <div class="list_1">操作</div>
     </div>
     <?
-    $nu = $mysqli->query("select count(*) from log");
-    $nu = $nu->fetch_array();
 
-    $pg = new page($nu[0], 10);//分页
+    $nsql="select count(*) from log ";
     $sql = "select * from log ";
     if (!empty($_REQUEST['name'])) {
         $name = $_REQUEST['name'];
-        $sql .= " where type='{$name}'";
+        $sql .= "where type like '%{$name}%' ";
+        $nsql .= "where type like '%{$name}%' ";
     }
+    $nu = $mysqli->query($nsql);
+    $nu = $nu->fetch_array();
+
+    $pg = new page($nu[0], 10);//分页
     $sql .= $pg->limit;
     $pro = $mysqli->query($sql);
     while ($row = $pro->fetch_assoc()) {

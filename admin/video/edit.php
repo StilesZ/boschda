@@ -20,7 +20,7 @@ $file = upload_fun($fileInfo, $path, $allowExt, $maxSize);
 
 $name = empty($_REQUEST['name'])?"":$_REQUEST['name'];
 $url=$_REQUEST['url'];
-
+$date=date('Y-m-d H:i:s',time());
 if (!empty($_REQUEST['id'])) {
     $id = $_REQUEST['id'];
     $sql = "select * from video where id={$id}";
@@ -44,7 +44,7 @@ if (!empty($_REQUEST['id'])) {
     $id=$mysqli->insert_id;
     if ($re) {
         if($pic!=""){
-            $sqlI = "insert into image(type,url) values ('video','{$pic}')";
+            $sqlI = "insert into image(type,url,add_time) values ('video','{$pic}','{$date}')";
             $res = $mysqli->query($sqlI);
         }
         addLog($mysqli,$_SESSION['name'],"video",'add',"视频信息添加成功ID=".$id);

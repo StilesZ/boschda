@@ -1,8 +1,0 @@
- Program
-   Robot Program
-     Set
-     MoveJ
-       Waypoint_1
-     Set
-     MoveJ
-       Waypoint_2

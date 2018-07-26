@@ -61,11 +61,12 @@ class sqlFunction
      * 数据查询
      * @param $table 数据表
      * @param null $select 字段
+     * @param null $where 条件
      * @return mixed 结果
      */
-    function StrQuery($table,$select)
+    function StrQuery($table,$select,$where)
     {
-        $sql = "SELECT {$select} FROM {$table}";
+        $sql = "SELECT {$select} FROM {$table} where $where";
 
         $result = $this->mysqli->query($sql);
 

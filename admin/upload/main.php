@@ -22,7 +22,7 @@ include '../config.php';
     $sql="select * from download ";
     if(!empty($_REQUEST['name'])){
         $name=$_REQUEST['name'];
-        $sql.=" and name='{$name}'";
+        $sql.=" and name like '%{$name}%'";
     }
     $pro=$mysqli->query($sql);
     while($row = $pro->fetch_assoc()) {

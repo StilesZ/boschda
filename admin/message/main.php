@@ -25,7 +25,7 @@ div class="title">
     $sql="select * from message ";
     if(!empty($_REQUEST['name'])){
         $type=$_REQUEST['name'];
-        $sql.=" where title='{$type}'";
+        $sql.=" where title like '%{$type}%'";
     }
     $pro=$mysqli->query($sql);
     while($row = $pro->fetch_assoc()) {

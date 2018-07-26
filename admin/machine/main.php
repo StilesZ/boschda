@@ -20,7 +20,7 @@ include '../config.php' ?>
 $sql="select * from machine";
 if(!empty($_REQUEST['name'])){
     $name=$_REQUEST['name'];
-    $sql.=" where name='{$name}'";
+    $sql.=" where name like '%{$name}%'";
 }
 $pro=$mysqli->query($sql);
 while($row = $pro->fetch_assoc()) {

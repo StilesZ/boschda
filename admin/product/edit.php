@@ -33,7 +33,7 @@ $content_nature = $_REQUEST['content_nature'];
 $content_technology = $_REQUEST['content_technology'];
 $content_use = $_REQUEST['content_use'];
 $content_parts = $_REQUEST['content_parts'];
-
+$date=date('Y-m-d H:i:s',time());
 if (!empty($_REQUEST['id'])) {
     $id = $_REQUEST['id'];
     $sql = "select * from product,product_type where product.type_id=product_type.id and product.id={$id}";
@@ -62,7 +62,7 @@ if (!empty($_REQUEST['id'])) {
         for($i=0;$i<count($file);$i++){
             $url=check($file[$i],'');
             if($url!=""){
-                $sqlI = "insert into image(type,url) values ('product','{$url}')";
+                $sqlI = "insert into image(type,url,add_time) values ('product','{$url}','{$date}')";
                 $res = $mysqli->query($sqlI);
             }
         }

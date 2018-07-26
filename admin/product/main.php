@@ -20,14 +20,16 @@ include '../page.php';?>
         <div class="list_1">操作</div>
     </div>
     <?
+    $nsql="select count(*) from product ";
     $sql="select *,product.id as pid,product.name as name,product_type.name as type_name,product_type.pid as tid from product,product_type where product.type_id=product_type.id ";
     if(!empty($_REQUEST['name'])){
         $name=$_REQUEST['name'];
-        $sql.=" where product.name='{$name}'";
+        $sql.=" and product.name like '%{$name}%' ";
+        $nsql .= "where name like '%{$name}%'";
     }
-    $func=new sqlFunction($config);
-    $nu=$func->StrQuery("product","count(*)");
-    $pg=new page($nu,10);
+    $nu = $mysqli->query($nsql);
+    $nu = $nu->fetch_array();
+    $pg=new page($nu[0],10);
     $sql.=$pg->limit;
     $pro=$mysqli->query($sql);
     while($row = $pro->fetch_assoc()) {

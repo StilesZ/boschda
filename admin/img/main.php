@@ -8,13 +8,14 @@
         <div class="list_1">略缩图</div>
         <div class="list_1">类别</div>
         <div class="list_1">路径</div>
+        <div class="list_1">上传时间</div>
         <div class="list_1">操作</div>
     </div>
     <?
     $sql="select * from image  ";
     if(!empty($_REQUEST['name'])){
         $type=$_REQUEST['name'];
-        $sql.=" where type='{$type}'";
+        $sql.=" where type like '%{$type}%'";
     }
     $pro=$mysqli->query($sql);
     while($row = $pro->fetch_assoc()) {
@@ -24,8 +25,8 @@
             <div class="list_1"><img src="../upload/<?=$row['url']?>"></div>
             <div class="list_1"><?=$row['type']?></div>
             <div class="list_1"><?=$row['url']?></div>
-            <div class="list_1">
-                <a onclick="del(<?=$row['id']?>,'img')">删除</a></div>
+            <div class="list_1"><?=$row['add_time']?></div>
+            <div class="list_1"><a onclick="del(<?=$row['id']?>,'img')">删除</a></div>
         </div>
         <?
     }

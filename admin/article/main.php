@@ -17,7 +17,7 @@
     $sql="select *,article.id as aid from article,article_type where article.type=article_type.id ";
     if(!empty($_REQUEST['name'])){
         $type=$_REQUEST['name'];
-        $sql.=" and type='{$type}'";
+        $sql.=" and type like '%{$type}%'";
     }
     $pro=$mysqli->query($sql);
     while($row = $pro->fetch_assoc()) {

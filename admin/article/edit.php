@@ -45,7 +45,7 @@ if (!empty($_REQUEST['id'])) {
     $id=$mysqli->insert_id;
     if ($re) {
         if($pic!=""){
-            $sqlI = "insert into image(type,url) values ('news','{$pic}')";
+            $sqlI = "insert into image(type,url,add_time) values ('news','{$pic}','{$date}')";
             $res = $mysqli->query($sqlI);
         }
         addLog($mysqli,$_SESSION['name'],"article",'add',"信息添加成功ID=".$id);

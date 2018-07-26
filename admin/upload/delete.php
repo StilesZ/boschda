@@ -19,5 +19,5 @@ if(!$result){
     echo "failed";
 }else{
     addLog($mysqli,$_SESSION['name'],"download",'delete',"下载信息删除成功ID=".$id);
-    echo "<script>alert('删除成功!');action('download/main.php');</script>";
+    echo "<script>alert('删除成功!');action('upload/main.php');</script>";
 }
