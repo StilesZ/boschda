@@ -7,7 +7,7 @@
  */
 include '../config.php';
 include '../log/log.php';
-//request input值
+//request 表单input值
 $id = "";
 $name = $_REQUEST['name'];
 $psw = $_REQUEST['psw'];
@@ -43,7 +43,7 @@ if (!empty($_REQUEST['id'])) {
         addLog($mysqli, $_SESSION['name'], "admin", 'add', "用户信息添加成功ID=".$id);
         echo "<script>alert('success'); location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";
     } else {
-        addLog($mysqli, $_SESSION['name'], "admin", 'add', "用户信息添加失败ID=".$id);
+        addLog($mysqli, $_SESSION['name'], "admin", 'add', "用户信息添加失败");
         echo "<script>alert('failed');location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";
     }
 }

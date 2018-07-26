@@ -27,7 +27,7 @@ class page
     /**
      * 构造方法，可以设置分页类的属性
      * @param    int $total 计算分页的总记录数
-     * @param    int $listRows 可选的，设置每页需要显示的记录数，默认为25条
+     * @param    int $listRows 可选的，设置每页需要显示的记录数，默认为10条
      * @param    mixed $query 可选的，为向目标页面传递参数,可以是数组，也可以是查询字符串格式
      * @param     bool $ord 可选的，默认值为true, 页面从第一页开始显示，false则为最后一页
      */

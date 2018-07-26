@@ -15,7 +15,6 @@ $array['val']=new ArrayObject();
 foreach ($_REQUEST as $key => $value){
     $array[$key]= $value;
 }
-$date=json_encode($array);//转json类型
 
 $val=json_encode($array['val']);//二维数组 属性值转json类型
 $val=json_decode($val);
@@ -25,6 +24,14 @@ $sel="select *,count(*) as count from workpiece,work where work.id=workpiece.typ
 $result = $mysqli->query($sel);
 $nu=$result->fetch_array();
 $name=$nu[7].$nu[8];
+
+$sek_weld="select attribute from weld_type where id={$array['weld']}";
+$res=$mysqli->query($sek_weld);
+$attr=$res->fetch_assoc();
+//$attr=json_decode($attr['attribute']);
+$array=array_merge($array, array('attr' => json_decode($attr['attribute'])));//合并数组
+
+$date=json_encode($array);//转json类型
 
 $sql = "insert into workpiece(name,type,attribute,weld_type,machine) values ('{$name}','{$array['type']}','{$val}','{$array['weld']}','{$array['machine']}')";
 $result = $mysqli->query($sql);

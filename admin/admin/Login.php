@@ -9,13 +9,14 @@ include '../../dao/Db.php';
 include '../log/log.php';
 
 $name = $_POST['name']; // 获取用户名
-$pwd = md5($_POST['password']);   // 获取密码
+$pwd = md5($_POST['password']);   // 获取密码 md5加密
 //$pwd = $_POST['password'];
 $uri = $_SERVER['REQUEST_URI'];
 if (!empty($name) && !empty($pwd)) {
     $sql = "select * from admin where name='{$name}'";
     $result = $mysqli->query($sql);
     $res = $result->fetch_assoc();
+    //双层判断防注入
     if ($res['password']==$pwd) {
 //        session_start();
         $_SESSION['name'] = $name;

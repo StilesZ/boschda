@@ -19,18 +19,18 @@ $row = $result->fetch_array();
         json.val = {};
         var i=0;
 
-        //
+        //弹窗 工件名称为工件下拉框选中的值
         $(".dialog-title span").text($("select[name='type']").find("option:selected").text());
 
-        //
+        //显示dialog弹窗
         $("#show").click(function () {
             $(".dialog").css("display","block");
         });
-        //
+        //关闭dialog弹窗
         $(".close").click(function () {
             $(".dialog").css("display","none");
         });
-        //
+        //添加工件属性标签
         $("#add").click(function () {
             var name=prompt("工件属性","");
             if(name.trim()){
@@ -38,7 +38,7 @@ $row = $result->fetch_array();
                 i++;
             }
         });
-        //
+        //dialog 保存按钮 保存后存值 亦或可把代码放在开始按钮内
         $("#save").click(function () {
             var weld=$("select[name='weld-type']").val();
             var type=$("select[name='type']").val();
@@ -86,12 +86,12 @@ $row = $result->fetch_array();
                 }
             });
         });
-
+        //删除添加的标签
         remove=function(e){
             $("#delete"+e+"").parent("div").remove();
         }
 
-        //
+        //ip table 选中事件
         $(".client tr").click(function () {
             $(this).addClass("active");
             id=$(this).children('td').eq(0).text();
@@ -99,6 +99,7 @@ $row = $result->fetch_array();
             // console.log(id);
         });
 
+        //开始按钮
         $(".start").click(function () {
             var input=$('.dialog-attr').find('input');
             var num=input.length;
@@ -117,13 +118,14 @@ $row = $result->fetch_array();
                 async:true,//同步
                 success:function(result){
                     console.log(result);
+                    websocket.send(JSON.stringify(result));
                 },
                 error:function(){
                     alert('false');
                 }
             });
 
-            websocket.send(JSON.stringify(json));
+            // websocket.send(JSON.stringify(json));
         })
 
     })

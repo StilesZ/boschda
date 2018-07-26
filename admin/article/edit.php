@@ -51,7 +51,7 @@ if (!empty($_REQUEST['id'])) {
         addLog($mysqli,$_SESSION['name'],"article",'add',"信息添加成功ID=".$id);
         echo "<script>alert('success');location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";
     } else {
-        addLog($mysqli,$_SESSION['name'],"article",'add',"信息添加失败ID=".$id);
+        addLog($mysqli,$_SESSION['name'],"article",'add',"信息添加失败".$id);
         echo "<script>alert('failed');location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";
     }
 }

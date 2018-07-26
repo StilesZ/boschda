@@ -39,7 +39,7 @@ if (!empty($_REQUEST['id'])) {
         echo "success";
         exit();
     } else {
-        addLog($mysqli, $_SESSION['name'], "weld_type", 'add', "工件信息添加失败ID=".$id);
+        addLog($mysqli, $_SESSION['name'], "weld_type", 'add', "工件信息添加失败".$id);
 //        echo "<script>alert('failed');location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";
 //        echo "failed";
         exit();

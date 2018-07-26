@@ -27,6 +27,7 @@ include '../page.php';
     <?
     $nu = $mysqli->query("select count(*) from log");
     $nu = $nu->fetch_array();
+
     $pg = new page($nu[0], 10);//分页
     $sql = "select * from log ";
     if (!empty($_REQUEST['name'])) {

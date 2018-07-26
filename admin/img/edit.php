@@ -36,7 +36,7 @@ if (!empty($_REQUEST['id'])) {
         addLog($mysqli,$_SESSION['name'],"image",'edit',"图片修改成功ID=".$id);
         echo "<script>alert('success');location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";
     } else {
-        addLog($mysqli,$_SESSION['name'],"image",'edit',"图片修改失败ID=".$id);
+        addLog($mysqli,$_SESSION['name'],"image",'edit',"图片修改失败".$id);
         echo "<script>alert('failed');location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";
     }
 }
