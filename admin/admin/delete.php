@@ -13,6 +13,7 @@ if(empty($_REQUEST['id'])){
 }
 $id=$_REQUEST['id'];
 
+//设置id=1的管理员信息不能删除
 if($id==1){
     echo "<script>alert('管理员不可删除!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>";
     exit();
