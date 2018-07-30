@@ -53,5 +53,6 @@ include '../page.php';
         <?
     }
     ?>
+<!--    显示分页脚本-->
     <?php echo $pg->fpage(); ?>
 </div>
