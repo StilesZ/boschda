@@ -31,6 +31,7 @@ include './admin/checklogin.php';
 <script>
     $(document).ready(function() {
 
+        //菜单效果样式 上滑下滑 slideUp/slideDown
         $('.left-nav li').click(function(){
             $(this).children('ul').slideDown();
             $(this).siblings('li').children('ul').slideUp();
@@ -54,27 +55,31 @@ include './admin/checklogin.php';
         // read();
     });
 
+    //tcp协议
     websocket = new WebSocket('ws://192.168.0.161:2046/');
-
+    //打开连接
     websocket.onopen = function(evt) {
         console.log('connect');
         // websocket.send('{"data":"您好，世界！"}');
     };
+    //关闭连接
     websocket.onclose = function(evt) {
         console.log('onclose');
         console.log(evt);
     };
+    //返回信息
     websocket.onmessage = function(evt) {
         console.log('onmessage');
         if (evt.data) {
             console.log(JSON.parse(JSON.parse(evt.data)));
         }
     };
+    //返回错误信息
     websocket.onerror = function(evt) {
         console.log('onerror');
         console.log(evt);
     };
-
+    //图片上传文件显示
     function show(file) {
         var id=file.id;
         var img=$("#img"+id+" img");
@@ -134,6 +139,7 @@ include './admin/checklogin.php';
                     //xmlHttp.status == 200        ——    服务器反馈正常
                     document.getElementById("main").innerHTML = xmlHttp.responseText;
                     executeScript(xmlHttp.responseText);
+                    //main.php列表标题自适应宽度 百分比%
                     var list=$('.list-title .list_1');
                     var item=$('.list .list_1');
                     var li=list.length;
@@ -166,7 +172,7 @@ include './admin/checklogin.php';
     }
 
     function del(id,site){
-        if(window.confirm("Are you suer delete it?")){
+        if(window.confirm("您确认要删除此信息?")){
             // window.location=site+"/delete.php?id="+id;
             action(site+"/delete.php?id="+id);
         }
@@ -181,7 +187,7 @@ include './admin/checklogin.php';
 </script>
 <header style="box-sizing: border-box; height: 8%; top: 4%; min-height: 2em; background: #222222;color: #e5e5e5; font-size: 2em">
     <div style="float: left; height: 100%;line-height: 200%;"><em>博视达</em>后台管理系统 <span><a target="_blank" href="../page/index.php" style="color: white;font-size: .5em;">前台首页</a></span></div>
-    <div style="float: right; height: 100%;line-height: 200%;"><a href="admin/LoginOut.php" style="color: #e5e5e5">登出</a></div>
+    <div style="float: right; height: 100%;line-height: 200%;"><?=$_SESSION['name']?>&nbsp;<a href="admin/LoginOut.php" style="color: #e5e5e5">登出</a></div>
 </header>
 <div class="content">
     <div class="left">

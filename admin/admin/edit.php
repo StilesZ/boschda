@@ -8,18 +8,23 @@
 include '../config.php';
 include '../log/log.php';
 //request 表单input值
+
+if($_SESSION['type']!=1){
+    echo "<script>alert('您没有权限'); location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";
+    exit();
+}
 $id = "";
 $name = $_REQUEST['name'];
 $psw = $_REQUEST['psw'];
 $status = empty($_REQUEST['status']) ? null : $_REQUEST['status'];
 $type = empty($_REQUEST['type']) ? null : $_REQUEST['type'];
-//id存在更新，不存在插入
+//判断id ：存在更新 ？ 不存在插入
 if (!empty($_REQUEST['id'])) {
     $id = $_REQUEST['id'];
-    $checkpsw=$mysqli->query("select name from admin where id='{$id}'");
+    $checkpsw=$mysqli->query("select password from admin where id='{$id}'");
     $re=$checkpsw->fetch_assoc();
     if($re['password']!=$psw){ //判断密码是否更改
-        $psw=md5($psw);
+        $psw=md5($psw);//md5 加密
     }
 
     $check=check($name,$mysqli,$id);//判断用户名是否存在

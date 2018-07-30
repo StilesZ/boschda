@@ -24,8 +24,18 @@ if (!empty($_REQUEST['id'])) {
                    onfocus="if(this.value == this.defaultValue) { this.value = ''; }"  size="30" name="psw" value="<?=count($row)>0?$row[2]:''?>">
             <input type="text" placeholder="状态" onblur="if(this.value == '') { this.value = this.defaultValue; }"
                    onfocus="if(this.value == this.defaultValue) { this.value = ''; }"  size="30" name="status" value="<?=count($row)>0?$row[5]:''?>">
-            <input type="text" placeholder="用户类型" onblur="if(this.value == '') { this.value = this.defaultValue; }"
-                   onfocus="if(this.value == this.defaultValue) { this.value = ''; }"  size="30" name="type" value="<?=count($row)>0?$row[3]:''?>">
+<!--            <input type="text" placeholder="用户类型" onblur="if(this.value == '') { this.value = this.defaultValue; }"-->
+<!--                   onfocus="if(this.value == this.defaultValue) { this.value = ''; }"  size="30" name="type" value="--><?//=count($row)>0?$row[3]:''?><!--">-->
+            <select name="type">
+                <?
+                $sql="select * from user_type";
+                $res = $mysqli->query($sql);
+                while($option = $res->fetch_assoc()){
+                    ?>
+                    <option value="<?=$option['id']?>" <? if($option['id']==(count($row)>0?$row[3]:'1')) echo "selected='selected'";?>><?=$option['name']?></option>
+                    <?
+                }?>
+            </select>
         </div>
         <div class="edit" style="width:88%; height:auto; margin: 0 auto;">
             <input id="submit" type="submit" value="提交" style="cursor: pointer;background: rgba(165,165,165,0.37);">

@@ -21,6 +21,7 @@ if (!empty($name) && !empty($pwd)) {
 //        session_start();
         $_SESSION['name'] = $name;
         $_SESSION['id'] = $res['id'];
+        $_SESSION['type']=$res['user_type'];
         $date = date('Y-m-d H:i:s', time());
         $sql1 = "update admin set login_time='{$date}',login_times=login_times+1 where id={$res['id']}";
         $result = $mysqli->query($sql1);
