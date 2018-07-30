@@ -10,11 +10,11 @@ include '../log/log.php';
 
 $id = "";
 $name = $_REQUEST['val'];
-$name=json_encode($name);
+$name=json_encode($name);//array转json格式
 
 if (!empty($_REQUEST['id'])) {
     $id = $_REQUEST['id'];
-    $check=check($name,$mysqli,$id);
+//    $check=check($name,$mysqli,$id);
     $sql = "update weld_type set attribute='{$name}' where id={$id}";
     $result = $mysqli->query($sql);
     if ($result) {
@@ -29,19 +29,17 @@ if (!empty($_REQUEST['id'])) {
         exit();
     }
 } else {
-    $check=check($name,$mysqli,$id);
+//    $check=check($name,$mysqli,$id);
     $sql = "insert into weld_type(attribute) values ('{$name}')";
     $result = $mysqli->query($sql);
-    $id=$mysqli->insert_id;
+    $id=$mysqli->insert_id;//返回新增插入ID
     if ($result) {
         addLog($mysqli, $_SESSION['name'], "weld_type", 'add', "工件信息添加成功ID=".$id);
 //        echo "<script>alert('success'); location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";
-        echo "success";
+        echo "success";//ajax返回值
         exit();
     } else {
         addLog($mysqli, $_SESSION['name'], "weld_type", 'add', "工件信息添加失败".$id);
-//        echo "<script>alert('failed');location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";
-//        echo "failed";
         exit();
     }
 }

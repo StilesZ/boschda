@@ -29,9 +29,11 @@ if (!empty($_REQUEST['id'])) {
             $("#delete" + e + "").parent("div").remove();
         }
 
+        //表单提交
         $('#addForm').on('submit', function (e){
             var input = $(".edit").eq(0).find('input');
             var num = input.length;
+            //json赋值
             for (var i = 0; i < num; i++) {
                 var val = input.eq(i).attr("name");
                 // str = "json."+val+"='"+input.eq(i).val()+"'";
@@ -50,7 +52,7 @@ if (!empty($_REQUEST['id'])) {
                     if(result.trim()=="success"){
                         action("weld_type/main.php");
                     }else{
-                        alert("fail");
+                        alert("插入失败");
                     }
                 },
                 error:function(){
@@ -62,6 +64,7 @@ if (!empty($_REQUEST['id'])) {
 </script>
 <form id="addForm" action="weld_type/edit.php?id=<?=count($row)>0?$row[0]:''?>" method="post">
     <div class="add_button" style="width:88%; margin: 1em auto;">
+<!--        下拉菜单遍历-->
         <select name="type">
             <?
             $sql = "select * from weld_attr";

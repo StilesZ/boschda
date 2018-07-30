@@ -16,7 +16,7 @@ $allowExt = array('jpeg', 'jpg', 'png', 'tif', "bmp");
 $path = "../../upload/video";
 
 include_once '../upload/upload.php';
-$file = upload_fun($fileInfo, $path, $allowExt, $maxSize);
+$file = upload_fun($fileInfo, $path, $allowExt, $maxSize);//上传 成功返回路径：失败返回4
 
 $name = empty($_REQUEST['name'])?"":$_REQUEST['name'];
 $url=$_REQUEST['url'];
@@ -26,7 +26,7 @@ if (!empty($_REQUEST['id'])) {
     $sql = "select * from video where id={$id}";
     $result = $mysqli->query($sql);
     $row = $result->fetch_array();
-    $pic = check($file, $row[2]);
+    $pic = check($file, $row[2]);//判断上传路径
 
     $sqlU = "update video set name='{$name}',pic='{$pic}',url='{$url}' where id={$id}";
     $re = $mysqli->query($sqlU);
@@ -38,7 +38,7 @@ if (!empty($_REQUEST['id'])) {
         echo "<script>alert('failed');location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";
     }
 }else{
-    $pic = check($file,"");
+    $pic = check($file,"");//判断上传路径
     $sqlU = "insert into video(name,pic,url) values ('{$name}','{$pic}','{$url}')";
     $re = $mysqli->query($sqlU);
     $id=$mysqli->insert_id;
@@ -54,7 +54,7 @@ if (!empty($_REQUEST['id'])) {
         echo "<script>alert('failed');location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";
     }
 }
-
+//判断图片路径值 4为上传失败 图片是否更改
 function check($url, $row)
 {
     if ($url == 4) {
