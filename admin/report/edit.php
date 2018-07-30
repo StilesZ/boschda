@@ -18,7 +18,7 @@ foreach ($_REQUEST as $key => $value){
 
 $val=json_encode($array['val']);//二维数组 属性值转json类型
 $val=json_decode($val);
-$val=json_encode($val,JSON_UNESCAPED_UNICODE);
+$val=json_encode($val,JSON_UNESCAPED_UNICODE);//中文转换格式
 
 $sel="select *,count(*) as count from workpiece,work where work.id=workpiece.type and work.id ={$array['type']}";
 $result = $mysqli->query($sel);
@@ -38,7 +38,7 @@ $result = $mysqli->query($sql);
 
 //$val=json_encode($val);
 if ($result) {
-    $insert_id=$mysqli->insert_id;
+    $insert_id=$mysqli->insert_id;//返回新增ID
     addLog($mysqli, $_SESSION['name'], "report", 'add', "数据发送成功");
     echo $date;//输出json数据
     exit();

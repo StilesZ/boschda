@@ -47,6 +47,7 @@ function upload_fun($fileInfo,$path,$allowExt,$maxSize){
             echo "文件".$filename."上传失败!";
         }
     }else{
+//        4为上传失败 返回4 判断
         switch ($error){
             case 1:
                 echo "超过了上传文件的最大值，请上传10M以下文件";

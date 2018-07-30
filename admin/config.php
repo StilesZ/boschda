@@ -22,7 +22,6 @@ $config['password'] = "123456";//密码
 $config['database'] = "bsd";//数据库
 $config['port'] = 3306;    //端口号
 
-
 //$mysqli=new sqlFunction($config);
 //$mysqli->connect($config);
 

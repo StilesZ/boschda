@@ -8,6 +8,7 @@
 
 include '../config.php';
 $row=array();
+//判断id 是否有值 判断为更新或新增数据
 if (!empty($_REQUEST['id'])) {
     $id = $_REQUEST['id'];
     $sql="select * from article,article_type where article.type=article_type.id and article.id={$id}";

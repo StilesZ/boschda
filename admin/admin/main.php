@@ -21,6 +21,7 @@ if(!empty($_REQUEST['name'])){
     $sql.=" where name like '%{$name}%'";
 }
 $pro=$mysqli->query($sql);
+//遍历数据
 while($row = $pro->fetch_assoc()) {
     ?>
     <div class="list">

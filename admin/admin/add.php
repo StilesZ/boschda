@@ -7,6 +7,7 @@
  */
 include '../config.php';
 $row=array();//定义空数组
+//判断id 是否有值 判断为更新或新增数据
 if (!empty($_REQUEST['id'])) {
     $id = $_REQUEST['id'];//获取id
     $sql = "select * from admin where id={$id}";

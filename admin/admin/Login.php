@@ -19,15 +19,19 @@ if (!empty($name) && !empty($pwd)) {
     //双层判断防注入
     if ($res['password']==$pwd) {
 //        session_start();
+//        设置session值 判断用户是否登录
         $_SESSION['name'] = $name;
         $_SESSION['id'] = $res['id'];
         $_SESSION['type']=$res['user_type'];
+
         $date = date('Y-m-d H:i:s', time());
         $sql1 = "update admin set login_time='{$date}',login_times=login_times+1 where id={$res['id']}";
         $result = $mysqli->query($sql1);
+        //记录日志
         addLog($mysqli, $_SESSION['name'], "login", 'login', "用户登录成功ID=" . $res['id']);
         echo "<script>window.location.href='../index.php'</script>";
     } else {
+        //记录日志
         addLog($mysqli, $name, "login", 'login', "用户登录失败:" . $name);
         echo "<script>alert('登录失败'); window.location.href='../login.html'</script>";
         exit();

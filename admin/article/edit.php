@@ -42,7 +42,7 @@ if (!empty($_REQUEST['id'])) {
     $pic = check($file,"");
     $sqlU = "insert into article(title,pic,content,type,add_time) values ('{$title}','{$pic}','{$content}','{$type_id}','{$date}')";
     $re = $mysqli->query($sqlU);
-    $id=$mysqli->insert_id;
+    $id=$mysqli->insert_id;//返回新增ID
     if ($re) {
         if($pic!=""){
             $sqlI = "insert into image(type,url,add_time) values ('news','{$pic}','{$date}')";

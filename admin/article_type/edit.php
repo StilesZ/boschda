@@ -16,6 +16,7 @@ if (!empty($_REQUEST['id'])) {
     $sqlU = "update article_type set name='{$name}',aliases='{$aliases}' where id={$id}";
     $re = $mysqli->query($sqlU);
     if ($re) {
+//        添加日志记录
         addLog($mysqli,$_SESSION['name'],"article_type",'delete',"信息修改成功ID=".$id);
         echo "<script>alert('success');location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";
     } else {
